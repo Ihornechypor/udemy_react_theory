@@ -32,6 +32,6 @@ export default () =>(
             this car component
             <b>
                 some bold text
-            </b>
+            </b> 
         </div>
 );

@@ -9,6 +9,8 @@ export default props =>(
                 <strong>
                    Year {props.year}
                 </strong>
+                {props.children} 
             </p>
+            
         </div>
 );

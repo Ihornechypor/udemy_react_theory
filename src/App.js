@@ -10,24 +10,60 @@ class App extends Component {
       {name: 'audi', year:2021},
       {name: 'ford', year:2020}
     ],
-    pageTitle: 'Hello react state'
+    pageTitle: 'Hello react state',
+    showCars: false
   };
 
-  changeTitleHandler = (newTitle) => {
+  onChangeName(name, index){
+    const car = this.state.cars[index];
+    car.name = name;
+    const cars = [...this.state.cars]
+    cars[index] = car;
+
     this.setState({
-      pageTitle: newTitle
+      cars
+    });
+  }
+
+  deleteHandler(index){
+    const cars = this.state.cars.concat();
+    cars.splice(index, 1);
+
+    this.setState({
+      cars
+    })
+  }
+
+
+  changeViewCars = () => {
+    this.setState({
+      showCars: !this.state.showCars
     });
   };
 
-  handleInput = (event) => {
-    this.setState({
-      pageTitle: event.target.value
-    });
-  };
+
+
+
 
   render(){
     const  divStyle = {
       textAlign: 'center'
+    }
+
+    let cars = null
+
+    if(this.state.showCars){
+      cars = this.state.cars.map((car,index)=>{
+        return (
+          <Car 
+            key={index}
+            name={car.name}
+            year={car.year}
+            onDelete={this.deleteHandler.bind(this, index)}
+            onChangeName={event=> this.onChangeName(event.target.value, index)}
+          />
+        )
+    })
     }
 
 
@@ -38,23 +74,14 @@ class App extends Component {
           {this.state.pageTitle}
         </h1>
 
-        <input type="text" onChange={this.handleInput}/>
+
         <button 
-          onClick={this.changeTitleHandler.bind(this, 'Chnaged')}
+          onClick={this.changeViewCars}
         > 
-          Change title
+          Change cars
         </button>
 
-        {this.state.cars.map((car,index)=>{
-          return (
-            <Car 
-              key={index}
-              name={car.name}
-              year={car.year}
-              onChangeTitle={()=> this.changeTitleHandler(car.name)}
-            />
-          )
-        })}
+        { cars }
       </div>
     );
   }

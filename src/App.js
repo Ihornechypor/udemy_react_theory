@@ -80,8 +80,14 @@ class App extends Component {
         > 
           Change cars
         </button>
-
-        { cars }
+        <div style={{
+          width: 400,
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          { cars }
+        </div>
+   
       </div>
     );
   }

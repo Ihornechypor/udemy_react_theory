@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import './App.scss';
-import Car from './Car/Car'
+import classes from './App.module.scss';
+import Car from './Car/Car';
+
+console.log(classes);
 
 class App extends Component {
 

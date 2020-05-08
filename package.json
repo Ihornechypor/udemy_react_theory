@@ -34,6 +34,7 @@
     ]
   },
   "devDependencies": {
+    "node-sass": "^4.14.1",
     "radium": "^0.26.0",
     "react-autocomplete-cli": "0.0.3"
   }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import classes from './App.module.scss';
 import Car from './Car/Car';
 
-console.log(classes);
+
 
 class App extends Component {
 
@@ -44,9 +44,6 @@ class App extends Component {
   };
 
 
-
-
-
   render(){
     const  divStyle = {
       textAlign: 'center'
@@ -72,8 +69,12 @@ class App extends Component {
     
     return (
       <div style={divStyle}>
-        <h1>
+        {/* <h1>
           {this.state.pageTitle}
+        </h1> */}
+
+        <h1>
+          {this.props.title}
         </h1>
 
 

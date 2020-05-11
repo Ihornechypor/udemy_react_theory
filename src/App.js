@@ -6,15 +6,22 @@ import Car from './Car/Car';
 
 class App extends Component {
 
-  state = {
-    cars: [
-      {name: 'ford', year:2018},
-      {name: 'audi', year:2021},
-      {name: 'ford', year:2020}
-    ],
-    pageTitle: 'Hello react state',
-    showCars: false
-  };
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      cars: [
+        {name: 'ford', year:2018},
+        {name: 'audi', year:2021},
+        {name: 'ford', year:2020}
+      ],
+      pageTitle: 'Hello react state',
+      showCars: false
+    };
+  }
+
+
 
   onChangeName(name, index){
     const car = this.state.cars[index];
@@ -69,13 +76,13 @@ class App extends Component {
     
     return (
       <div style={divStyle}>
-        {/* <h1>
-          {this.state.pageTitle}
-        </h1> */}
-
         <h1>
-          {this.props.title}
+          {this.state.pageTitle}
         </h1>
+
+        {/* <h1>
+          {this.props.title} 
+        </h1> */}
 
 
         <button 

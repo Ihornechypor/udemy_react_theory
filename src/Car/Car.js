@@ -2,9 +2,6 @@ import React from 'react';
 import Radium from 'radium';
 import classes from './car.module.scss';
 
-
-console.log(classes)
-
 const Car = props => {
     const inputClass = ['input'];
  

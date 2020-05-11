@@ -8,6 +8,7 @@ class App extends Component {
 
 
   constructor(props){
+    console.log('app consturctor')
     super(props);
 
     this.state = {
@@ -50,8 +51,17 @@ class App extends Component {
     });
   };
 
+  componentWillMount(){
+    console.log('componentWillMount')
+  };
+
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+
 
   render(){
+    console.log('render');
     const  divStyle = {
       textAlign: 'center'
     }

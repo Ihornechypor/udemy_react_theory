@@ -2,49 +2,53 @@ import React from 'react';
 import Radium from 'radium';
 import classes from './car.module.scss';
 
-const Car = props => {
-    const inputClass = ['input'];
+class Car extends React.Component {
+    render(){
+        const inputClass = ['input'];
  
-    if(props.name){
-        inputClass.push('green');
-    } else {
-        inputClass.push('red')
-    }
-
-    if(props.name.length > 4){
-        inputClass.push('bold')
-    }
-
-    const style = {
-        border: '1px solid #ccc',
-        boxShadow: '0 4px 5px 0 rgba(0,0,0,.14)',
-        ':hover': {
-            border: '1px solid #aaa',
-            boxShadow: '0 4px 5px 0 rgba(0,0,0,.25)',
-            cursor: 'pointer'
+        if(this.props.name){
+            inputClass.push('green');
+        } else {
+            inputClass.push('red')
         }
+    
+        if(this.props.name.length > 4){
+            inputClass.push('bold')
+        }
+    
+        const style = {
+            border: '1px solid #ccc',
+            boxShadow: '0 4px 5px 0 rgba(0,0,0,.14)',
+            ':hover': {
+                border: '1px solid #aaa',
+                boxShadow: '0 4px 5px 0 rgba(0,0,0,.25)',
+                cursor: 'pointer'
+            }
+        }
+    
+        return(
+            <div className={classes['Car']} style={style}>
+                <h3>
+                    Car name: {this.props.name}
+                </h3>
+                <p>
+                    <strong>
+                       Year {this.props.year}
+                    </strong>
+                </p>
+                <input type="text" 
+                       onChange={this.props.onChangeName} 
+                       value={this.props.name}
+                       className={inputClass.join(' ')}
+                />
+                <button onClick={this.props.onDelete}>
+                    Delete
+                </button>  
+            </div>
+        )
     }
+}
 
-    return(
-        <div className={classes['Car']} style={style}>
-            <h3>
-                Car name: {props.name}
-            </h3>
-            <p>
-                <strong>
-                   Year {props.year}
-                </strong>
-            </p>
-            <input type="text" 
-                   onChange={props.onChangeName} 
-                   value={props.name}
-                   className={inputClass.join(' ')}
-            />
-            <button onClick={props.onDelete}>
-                Delete
-            </button>  
-        </div>
-    )
-};
+
 
 export default Radium(Car)

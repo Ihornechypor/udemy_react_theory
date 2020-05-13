@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classes from './App.module.scss';
 import Car from './Car/Car';
 import ErrorBoundray from './ErrorBoundary/ErrorBoundary';
+import Counter from './Counter/Counter';
  
 
 
@@ -14,9 +15,9 @@ class App extends Component {
  
     this.state = {
       cars: [
-        {name: 'ford', year:2018},
-        {name: 'audi', year:2021},
-        {name: 'ford', year:2020}
+        {name: 'ford', year:2018}
+        // {name: 'audi', year:2021},
+        // {name: 'ford', year:2020}
       ],
       pageTitle: 'Hello react state',
       showCars: false
@@ -88,10 +89,12 @@ class App extends Component {
     
     return (
       <div style={divStyle}>
+       
         <h1>
           {this.state.pageTitle}
         </h1>
-
+        <Counter />
+        <hr/>
         {/* <h1>
           {this.props.title} 
         </h1> */}

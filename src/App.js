@@ -3,8 +3,9 @@ import classes from './App.module.scss';
 import Car from './Car/Car';
 import ErrorBoundray from './ErrorBoundary/ErrorBoundary';
 import Counter from './Counter/Counter';
- 
 
+
+export const ClickedContext = React.createContext(false)
 
 class App extends Component {
 
@@ -85,18 +86,24 @@ class App extends Component {
         <h1>
           {this.state.pageTitle}
         </h1>
-        <Counter />
+        <ClickedContext.Provider value={this.state.clicked}>
+          <Counter/>
+        </ClickedContext.Provider>
         <hr/>
         {/* <h1>
           {this.props.title} 
         </h1> */}
 
 
-        <button 
-          onClick={this.changeViewCars}
-        > 
+        <button onClick={this.changeViewCars}> 
           Change cars
         </button>
+
+
+        <button onClick={()=> this.setState({clicked: true})}>
+           change clicked 
+        </button>
+
         <div style={{
           width: 400,
           margin: 'auto',

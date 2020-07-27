@@ -3,8 +3,6 @@ import Auxiliary from '../hoc/Auxiliary'
 import Counter2 from '../Counter2/Counter2'
 
 
-
-
 export default class Counter extends Component {
     state = {
         counter: 0

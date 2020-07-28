@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import Auxiliary from '../hoc/Auxiliary'
-import {add,sub,addNumber} from "../redux/actions/actions";
+import {add,sub,addNumber,onAddAs} from "../redux/actions/actions";
+import {number} from "prop-types";
 
 
 class Counter extends Component {
@@ -27,6 +28,10 @@ class Counter extends Component {
                     <button onClick={() => this.props.onAddNumber(15)}>+ 15</button>
                     <button onClick={() => this.props.onAddNumber(-17)}>- 17</button>
                 </div>
+
+                <div className="Actions">
+                    <button onClick={() => this.props.onAsyncAdd(100)}>asunc 100</button>
+                </div>
             </Auxiliary>
         )
     }
@@ -42,7 +47,8 @@ function mapDispatchToProps(dispatch) {
     return {
         onAdd: () => dispatch(add()),
         onSub: () => dispatch(sub()),
-        onAddNumber: number => dispatch(addNumber(number))
+        onAddNumber: number => dispatch(addNumber(number)),
+        onAsyncAdd: number => dispatch(onAddAs(number))
     }
 }
 

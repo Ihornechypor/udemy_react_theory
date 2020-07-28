@@ -14,9 +14,6 @@ export default props => {
             <ClickedContext.Consumer>
                 {clicked => clicked ? <p>clicked</p> : null} 
             </ClickedContext.Consumer>
-
-
-            
         </div>
     )
 }

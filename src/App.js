@@ -3,7 +3,7 @@ import classes from './App.module.scss';
 import Car from './Car/Car';
 import ErrorBoundray from './ErrorBoundary/ErrorBoundary';
 import Counter from './Counter/Counter';
-
+import Counter3 from "./Counter3/Counter3";
 
 export const ClickedContext = React.createContext(false)
 
@@ -90,9 +90,8 @@ class App extends Component {
           <Counter/>
         </ClickedContext.Provider>
         <hr/>
-        {/* <h1>
-          {this.props.title} 
-        </h1> */}
+
+        <Counter3/>
 
 
         <button onClick={this.changeViewCars}> 

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import Auxiliary from '../hoc/Auxiliary'
-import Counter2 from '../Counter2/Counter2'
-import {number} from "prop-types";
+import {add,sub,addNumber} from "../redux/actions/actions";
 
 
 class Counter extends Component {
@@ -41,9 +40,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        onAdd: () => dispatch({type: 'ADD'}),
-        onSub: () => dispatch({type: 'SUB'}),
-        onAddNumber: number => dispatch({type: 'ADD_NUMBER', payload: number})
+        onAdd: () => dispatch(add()),
+        onSub: () => dispatch(sub()),
+        onAddNumber: number => dispatch(addNumber(number))
     }
 }
 

@@ -15,16 +15,14 @@ class Counter extends Component {
 
     render(){
 
-        console.log('app', this.props)
-
         return(
             <Auxiliary>
                 <h2>
                     counter {this.props.counter}
                 </h2>
                 <Counter2 />
-                <button onClick={this.addCounter}>+</button>
-                <button onClick={()=> this.setState({counter: this.props.counter - 1})}>-</button>
+                <button onClick={this.props.onAdd}>+</button>
+                <button onClick={this.props.onSub}>-</button>
             </Auxiliary>
         )
     }
@@ -36,4 +34,11 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Counter)
+function mapDispatchToProps(dispatch) {
+    return {
+        onAdd: () => dispatch({type: 'ADD'}),
+        onSub: () => dispatch({type: 'SUB'})
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Counter)

@@ -4,6 +4,17 @@ const initialState = {
 
 export default function rootDeducer(state = initialState, action) {
 
-    return state
+    switch (action.type) {
+        case 'ADD':
+            return {
+                counter: state.counter + 1
+            }
+        case 'SUB':
+            return {
+                counter: state.counter - 1
+            }
 
+    }
+
+    return state
 }

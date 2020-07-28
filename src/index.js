@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux'
 import rootDeducer from "./redux/rootReducer";
 
-const store = createStore(rootDeducer)
+
+
+const loggerMiddleware = store => next => action => {
+    const result = next(action);
+
+    console.log('mid',store.getState())
+    return result
+}
+
+const store = createStore(rootDeducer, applyMiddleware(loggerMiddleware))
 
 const app = (
     <Provider store={store}>

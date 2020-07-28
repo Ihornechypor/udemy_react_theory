@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 import Auxiliary from '../hoc/Auxiliary'
 import Counter2 from '../Counter2/Counter2'
 
 
-export default class Counter extends Component {
-    state = {
-        counter: 0
-    }
-
+class Counter extends Component {
     addCounter = () => {
-        // this.setState({
-        //     counter: this.state.counter + 1
-        // })
-
         this.setState((prevState)=>{
             return {
                 counter: prevState.counter + 1
@@ -21,22 +14,26 @@ export default class Counter extends Component {
     }
 
     render(){
+
+        console.log('app', this.props)
+
         return(
             <Auxiliary>
                 <h2>
-                    counter {this.state.counter}
+                    counter {this.props.counter}
                 </h2>
                 <Counter2 />
                 <button onClick={this.addCounter}>+</button>
-                <button onClick={()=> this.setState({counter: this.state.counter - 1})}>-</button>
+                <button onClick={()=> this.setState({counter: this.props.counter - 1})}>-</button>
             </Auxiliary>
         )
-        // return [
-        //     <h2 key={1}>
-        //         counter {this.state.counter}
-        //     </h2>,
-        //     <button onClick={this.addCounter}  key={2}>+</button>,
-        //     <button onClick={()=> this.setState({counter: this.state.counter - 1})}  key={3}>-</button>,
-        // ]
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        counter: state.counter
+    }
+}
+
+export default connect(mapStateToProps)(Counter)
